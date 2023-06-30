@@ -17,13 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from webapp.views import mostrar_estudiantes
-from estudiantes.views import agregar_estudiante, ver_estudiante, editar_estudiante, eliminar_estudiante
+from estudiantes.views import agregar_estudiante, ver_estudiante, editar_estudiante, eliminar_estudiante, \
+    generar_reporte
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mostrar_estudiantes, name='inicio'),
-    path('agregar estudiante/', agregar_estudiante),
+    path('agregar_estudiante/', agregar_estudiante),
     path('ver_estudiante/<int:idEstudiante>', ver_estudiante),
     path('editar_estudiante/<int:idEstudiante>', editar_estudiante),
     path('eliminar_estudiante/<int:idEstudiante>', eliminar_estudiante),
+    path('generar_reporte/', generar_reporte),
+
 ]
