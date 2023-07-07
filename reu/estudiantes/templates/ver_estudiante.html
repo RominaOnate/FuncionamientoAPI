@@ -21,6 +21,7 @@
         <th class="table-warning">Nombre</th>
         <th class="table-warning">sexo</th>
         <th class="table-warning">Email</th>
+        <th class="table-warning">Facultad</th>
         <th class="table-warning">Carrera</th>
         <th class="table-warning">Vigencia</th>
 
@@ -33,6 +34,7 @@
             <td class="table-warning">{{estudiante.nombre | upper}}</td>
             <td class="table-warning">{% if estudiante.sexo == 'F' %} Femenino {% endif %} {% if estudiante.sexo == 'M' %}Masculino {% endif %}</td>
             <td class="table-warning">{{estudiante.email}} </td>
+           <td class="table-warning">{{estudiante.facultad}} </td>
             <td class="table-warning">{{estudiante.carrera}} </td>
             <td class="table-warning">{{estudiante.vigencia}}</td>
        </tr>

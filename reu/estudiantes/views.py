@@ -66,8 +66,9 @@ def generar_reporte(request):
     ws['D3'] = 'NOMBRE'
     ws['E3'] = 'SEXO '
     ws['F3'] = 'EMAIL '
-   # ws['G3'] = 'CARRERA '
-    ws['H3'] = 'VIGENCIA '
+    ws['G3'] = 'FACULTAD '
+    ws['H3'] = 'CARRERA '
+    ws['I3'] = 'VIGENCIA '
     cont = 4
     # Recorremos el conjunto de estudinates y vamos escribiendo cada uno de los datos en las celdas
     for estudiante in estudiantes:
@@ -76,8 +77,9 @@ def generar_reporte(request):
         ws.cell(row=cont, column=4).value = estudiante.nombre
         ws.cell(row=cont, column=5).value = estudiante.sexo
         ws.cell(row=cont, column=6).value = estudiante.email
-       # ws.cell(row=cont, column=7).value = estudiante.carrera
-        ws.cell(row=cont, column=8).value = estudiante.vigencia
+        ws.cell(row=cont, column=7).value = estudiante.facultad.nombre_facultad if estudiante.facultad else ""
+        ws.cell(row=cont, column=8).value = estudiante.carrera.nombre_carrera
+        ws.cell(row=cont, column=9).value = estudiante.vigencia
 
         cont = cont + 1
     # Establecemos el nombre del archivo

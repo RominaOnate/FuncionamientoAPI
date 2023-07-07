@@ -9,6 +9,11 @@ class Carrera(models.Model):
     def __str__(self):
         return self.nombre_carrera
 
+class Facultad(models.Model):
+    nombre_facultad = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.nombre_facultad
 
 class Estudiante(models.Model):
     sexos = [
@@ -20,6 +25,7 @@ class Estudiante(models.Model):
     nombre = models.CharField(max_length=50)
     sexo = models.CharField(max_length=1, choices=sexos, null=True)
     email= models.CharField(max_length=50)
+    facultad = models.ForeignKey(Facultad, on_delete=models.CASCADE, null=True)
     carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
     vigencia = models.BooleanField(default=True)
 
