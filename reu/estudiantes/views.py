@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.http import HttpResponse
 from django.forms import modelform_factory
+from rest_framework import viewsets, permissions, generics
+
 from estudiantes.models import Estudiante
 from estudiantes.forms import EstudianteFormulario
 from openpyxl import Workbook
+from estudiantes.serializers import EstudianteSerializer
 
 
 # Create your views here.
@@ -90,3 +93,15 @@ def generar_reporte(request):
     response["Content-Disposition"] = contenido
     wb.save(response)
     return response
+
+class EstudianteViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Estudiante.objects.all()
+    serializer_class = EstudianteSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class EstudianteDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Estudiante.objects.all()
+    serializer_class = EstudianteSerializer
